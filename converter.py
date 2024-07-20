@@ -68,8 +68,9 @@ for a in currentList:
             currentListGroup.append("egg")
         case "T":   # then tutor moves,
             currentListGroup.append("tutor")
-        case "S":   # then finally event moves, which are currently grounded on psychic terrain and thus immune to the priority bracket
-            print("Event move ping; not added to list. Fix later")
+        case "S":   # then finally event moves, which will be considered as tutor moves until cobblemon has a precedent
+            currentListGroup.append("tutor")
+            print("Event move ping; added to list as a tutor move. Address later")
 currentListGroup = list(set(currentListGroup))      # remove duplicates in list,
 for a in priorityBracket:                           # then filter out everything that isnt the highest on the priority bracket on the list
     if searchlist(a,currentListGroup) != -1:
@@ -86,6 +87,6 @@ for a in priorityBracket:   # "level", "tm", "egg", "tutor", "event"
             case "level":
                 lineOutput = currentMoveData[5:]+":"+currentMove
             case _:
-                lineOutput = "placeholder"
+                lineOutput = a+":"+currentMove
         break
 print(lineOutput)
