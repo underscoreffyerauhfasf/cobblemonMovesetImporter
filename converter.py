@@ -25,13 +25,6 @@ def searchlist(__search, __lst = []):
 
 # initialize variables
 priorityBracket = ["level", "tm", "egg", "tutor", "event"]
-        
-
-# sourcePath = r"C:\Users\david\Downloads\Modding\Minecraft\showdownToCobblemon\bulbasaur.ts"
-# s = open(sourcePath, "r")
-# for x in s:
-#     print(x.replace("	",""))
-# s.close()
 
 a = ""
 currentMove = ""
@@ -40,6 +33,23 @@ currentLine = ""
 currentList = []
 currentListGroup = []
 lineOutput = ""
+
+sourcePath = r"C:\Users\david\OneDrive\Documents\Programming\Python\cobblemonMovesetImporter\bulbasaur.ts"
+sourceFile = open(sourcePath, "r")
+itrMove = False
+for x in sourceFile:
+    if "learnset:" in x:
+        itrMove = True
+        print("itrMove = True")
+        continue
+    if "}," in x:
+        itrMove = False
+        print("itrMove = False")
+        continue
+
+    if itrMove == False:
+        continue
+    print(x)
 
 currentLine = '			doubleedge: ["9M", "8L33", "8V", "7L27", "7V", "6L27", "5L27", "4L27", "3M"],'
 print(currentLine)
